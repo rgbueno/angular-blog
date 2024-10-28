@@ -9,3 +9,8 @@
 .articles__others{
     
 }
+
+header {
+    display: flex;
+    justify-content: center;
+}
