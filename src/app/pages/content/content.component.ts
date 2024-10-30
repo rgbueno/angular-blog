@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { dataFake } from '../../data/dataFake';
 
 @Component({
   selector: 'app-content',
@@ -8,8 +9,32 @@ import { RouterLink } from '@angular/router';
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'
 })
-export class ContentComponent {
-  photoCover: string = 'https://i0.wp.com/www.astropt.org/blog/wp-content/uploads/2017/10/680d3defa78b4262_ysuf_thm_16.9_1920x1080.jpg';
-  contentTitle: string = 'Minha Noticia';
-  contentDescription: string = 'Olá mundo';
+export class ContentComponent implements OnInit{
+  photoCover: string = '';
+  contentTitle: string = '';
+  contentDescription: string = '';
+  id: string | null = '';
+
+  constructor(private route: ActivatedRoute){
+    
+  }
+  ngOnInit(): void {
+    this.route.paramMap.subscribe( value =>
+      this.id = value.get('id')
+    );
+    this.setValuesToComponent(this.id);
+  }
+
+  setValuesToComponent(id: string | null){
+    const result = dataFake.filter(
+      article => article.id.toString() == id
+    )[0]
+    if(result){
+      this.contentTitle = result.title;
+      this.contentDescription = result.description;
+      this.photoCover = result.photo;
+    }
+  }
+
+
 }

@@ -2,24 +2,17 @@
 <div class="container__articles">
     <div class="articles__main">
         <app-big-card
-            photoCover="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
-            cardTitle="Saiu a nova versão do Angular"
-            cardDescription="Nova versão do angular traz recursos solicitados por desenvolvedores há tempos."
+            [id]="mainArticle.id"
+            [photoCover]="mainArticle.photo"
+            [cardTitle]="mainArticle.title"
+            [cardDescription]="mainArticle.description"
         ></app-big-card>
     </div>
     <div class="articles__others">
-        <app-small-card
-            photoCover="https://m.media-amazon.com/images/S/pv-target-images/ec20deed774ea878d1d8ea95fe31e53adbe180e1a5f9d0e1449179a69cd33630._SX1080_FMjpg_.jpg"
-            cardTitle="Nova temporada The Big Bang Theory"
+        <app-small-card *ngFor="let article of articles"
+            [id]="article.id"
+            [photoCover]="article.photo"
+            [cardTitle]="article.title"
         ></app-small-card>
-        <app-small-card
-            photoCover="https://m.media-amazon.com/images/S/pv-target-images/ec20deed774ea878d1d8ea95fe31e53adbe180e1a5f9d0e1449179a69cd33630._SX1080_FMjpg_.jpg"
-            cardTitle="Nova temporada The Big Bang Theory"
-        ></app-small-card>
-        <app-small-card
-            photoCover="https://m.media-amazon.com/images/S/pv-target-images/ec20deed774ea878d1d8ea95fe31e53adbe180e1a5f9d0e1449179a69cd33630._SX1080_FMjpg_.jpg"
-            cardTitle="Nova temporada The Big Bang Theory"
-        ></app-small-card>
-        
     </div>
 </div>
